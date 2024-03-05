@@ -1,4 +1,5 @@
 const canvas = document.getElementById("canvas");
+const body = document.body;
 const ctx = canvas.getContext("2d");
 
 const  BALLZ = [];
@@ -78,10 +79,10 @@ class Ball{
     drawBall(){
         ctx.beginPath();
         ctx.arc(this.pos.x, this.pos.y, this.r, 0, 2*Math.PI);
-        ctx.strokeStyle = "black";
+        ctx.strokeStyle = "white";
         ctx.stroke();
-        ctx.fillStyle = "red";
-        ctx.fill();
+        //ctx.fillStyle = "red";
+        //ctx.fill();
     }
 
     display(){
@@ -139,6 +140,13 @@ class Matrix{
     }
 }
 
+canvas.addEventListener('focus', () => {
+    body.style.overflow = 'hidden'; // Disable scrolling when canvas is in focus
+  });
+
+canvas.addEventListener('blur', () => {
+    body.style.overflow = 'auto'; // Enable scrolling when canvas loses focus
+});
 
 
 canvas.addEventListener("keydown", function(e){
@@ -334,14 +342,14 @@ let edge4 = new Wall(0, canvas.clientHeight, 0, 0);
 let Wall1 = new Wall(200, 200, 400, 300);
 let Wall2 = new Wall(350, 450, 450, 300);
 */
-/*
+
 for(let i = 0; i < 10; i++){
     let newBall = new Ball(randInt(100, 500), randInt(50,400), 
         randInt(20,50), randInt(0,10));
 
     newBall.elasticity = randInt(0,10) / 10;
 }
-*/
+
 Ball1.player = true;
 
 
